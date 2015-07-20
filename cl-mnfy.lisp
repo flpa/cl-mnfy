@@ -1,10 +1,10 @@
 (in-package #:cl-mnfy)
 
-(defun print-code (code) 
+(defun print-code (sexp) 
   (loop 
     initially (format t "(")
     for prev = nil then sym
-    for sym in code
+    for sym in sexp
     do (if (listp sym)
          (print-code sym)
          ;; print symbols with ~a to get 'ab' instead of '#:ab'
