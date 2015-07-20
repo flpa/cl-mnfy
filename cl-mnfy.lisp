@@ -17,8 +17,7 @@
   (if (minifiable-p sym)
     ;; must check if used: fboundp, or as symbol?
     (make-symbol (subseq (symbol-name sym) 0 1))
-    sym
-    ))
+    sym))
 
 (defun minify (filename)
   (setf *shortened-symbols* (make-hash-table :test #'equal))
@@ -26,6 +25,8 @@
                 (read in))))
 
 (minify "~/code/lisp/cl-mnfy/res/test.lisp")
+(minify "~/code/lisp/cl-mnfy/res/comment.lisp")
+(minify "~/code/lisp/cl-mnfy/res/docstring.lisp")
 
 (defun minifiable-p (x)
   (and x
@@ -45,5 +46,4 @@
                     #\c
                     10
                     nil
-                    t
-                    ))))
+                    t))))
